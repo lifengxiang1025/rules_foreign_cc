@@ -532,6 +532,7 @@ def cc_external_rule_impl(ctx, attrs):
         include_dir_name = attrs.out_include_dir,
     )
     output_groups = _declare_output_groups(installdir_copy.file, outputs.out_binary_files)
+    rule_outputs = outputs.declared_outputs + path.get_child(installdir_copy.file).readdir()
     wrapped_files = [
         wrapped_outputs.script_file,
         wrapped_outputs.log_file,
